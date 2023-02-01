@@ -1,9 +1,9 @@
-FROM openjdk:8-jdk-alpine
+FROM hseeberger/scala-sbt
 
 WORKDIR /app
 
-COPY target/universal/stage /app
+COPY . /app
 
 EXPOSE 9000
 
-CMD ["bin/realworld-example-app", "-Dplay.http.secret.key=abcdefghijk"]
+CMD sbt run build.sbt
